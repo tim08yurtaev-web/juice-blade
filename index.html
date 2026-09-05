@@ -8,6 +8,8 @@
 <title>Сочный Клинок</title>
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-512.png">
+<!-- Gem Space Bridge SDK (official CDN build) — must load before the game script below -->
+<script src="https://cdn.jsdelivr.net/npm/@gemspace/gem-bridge-sdk/index.global.js"></script>
 <style>
   :root{
     --bg-deep:#0a1e1a;
@@ -274,14 +276,28 @@
 "use strict";
 
 /* =========================================================
-   0. GEM SPACE BRIDGE (safe, optional — never blocks the app)
+   0. GEM SPACE BRIDGE
    ========================================================= */
-function notifyBridgeReady(){
-  try{
-    if (window.bridge && window.bridge.app && typeof window.bridge.app.ready === "function"){
-      window.bridge.app.ready();
+// Official integration per @gemspace/gem-bridge-sdk README: the CDN build
+// (index.global.js, loaded in <head>) exposes a global window.GemSpaceBridge
+// object with a `.bridge` property. The required call is
+// await GemSpaceBridge.bridge.app.ready(), made once the game's UI has
+// been rendered. Wrapped in try/catch so the game keeps working normally
+// in a plain browser, where window.GemSpaceBridge won't exist.
+async function notifyBridgeReady() {
+  try {
+    if (
+      window.GemSpaceBridge &&
+      window.GemSpaceBridge.bridge &&
+      window.GemSpaceBridge.bridge.app &&
+      typeof window.GemSpaceBridge.bridge.app.ready === "function"
+    ) {
+      const result = await window.GemSpaceBridge.bridge.app.ready();
+      console.log("Gem Space MiniApp ready:", result);
     }
-  }catch(e){ /* not inside Gem Space — ignore silently */ }
+  } catch (error) {
+    console.warn("Gem Space Bridge unavailable:", error);
+  }
 }
 
 /* =========================================================
