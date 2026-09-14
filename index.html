@@ -203,7 +203,7 @@
   <!-- HUD (visible during play) -->
   <div id="hud">
     <div class="hud-left">
-      <div class="score-label">СЧЁТ</div>
+      <div class="score-label" id="scoreLabelHud">СЧЁТ</div>
       <div class="score-value" id="scoreValue">0</div>
       <div class="combo-text" id="comboText">COMBO x2</div>
     </div>
@@ -217,30 +217,31 @@
   <div class="overlay visible" id="screenMenu">
     <div class="panel">
       <div class="logo-wrap">
-        <h1 class="logo">Сочный<br>Клинок<small>JUICY&nbsp;BLADE</small></h1>
+        <h1 class="logo" id="menuLogo">Сочный<br>Клинок<small id="menuLogoSub">JUICY&nbsp;BLADE</small></h1>
         <div class="slash-underline"></div>
       </div>
-      <p class="tagline">Проведи пальцем или мышью по фруктам, чтобы разрезать их. Бомбы отнимают жизнь — трёх ошибок хватит, чтобы игра закончилась.</p>
+      <p class="tagline" id="tagline">Проведи пальцем или мышью по фруктам, чтобы разрезать их. Бомбы отнимают жизнь — трёх ошибок хватит, чтобы игра закончилась.</p>
       <div class="chip" id="menuBest">🏆 Рекорд: 0</div>
       <button class="btn" id="btnPlay">Играть</button>
       <div class="btn-row">
         <button class="btn secondary" id="btnHow">Как играть</button>
         <button class="btn secondary" id="btnSound">🔊 Звук</button>
       </div>
+      <button class="btn ghost" id="btnLang">🌐 English</button>
     </div>
-    <div class="credit">Сочный Клинок · v1.0.0</div>
+    <div class="credit" id="credit">Сочный Клинок · v1.0.0</div>
   </div>
 
   <!-- HOW TO PLAY -->
   <div class="overlay" id="screenHow">
     <div class="panel">
-      <h1 class="logo" style="font-size:clamp(24px,7vw,30px)">Как играть</h1>
+      <h1 class="logo" id="howTitle" style="font-size:clamp(24px,7vw,30px)">Как играть</h1>
       <div class="howto-list">
-        <div class="howto-item"><span class="howto-icon">👆</span><span><b>Проведи по фрукту</b> — пальцем на телефоне или мышью на компьютере, чтобы разрезать его.</span></div>
-        <div class="howto-item"><span class="howto-icon">💣</span><span><b>Не режь бомбы</b> — чёрные шары с фитилём отнимают жизнь. Три бомбы подряд — и игра окончена.</span></div>
-        <div class="howto-item"><span class="howto-icon">❤️</span><span><b>Не пропускай фрукты</b> — если фрукт улетит за край экрана, ты тоже теряешь жизнь. Всего их три.</span></div>
-        <div class="howto-item"><span class="howto-icon">⚡</span><span><b>Режь несколько подряд</b> — быстрые серии дают комбо и больше очков.</span></div>
-        <div class="howto-item"><span class="howto-icon">⏸</span><span>Кнопка паузы — в правом верхнем углу во время игры.</span></div>
+        <div class="howto-item"><span class="howto-icon">👆</span><span id="howtoText1"><b>Проведи по фрукту</b> — пальцем на телефоне или мышью на компьютере, чтобы разрезать его.</span></div>
+        <div class="howto-item"><span class="howto-icon">💣</span><span id="howtoText2"><b>Не режь бомбы</b> — чёрные шары с фитилём отнимают жизнь. Три бомбы подряд — и игра окончена.</span></div>
+        <div class="howto-item"><span class="howto-icon">❤️</span><span id="howtoText3"><b>Не пропускай фрукты</b> — если фрукт улетит за край экрана, ты тоже теряешь жизнь. Всего их три.</span></div>
+        <div class="howto-item"><span class="howto-icon">⚡</span><span id="howtoText4"><b>Режь несколько подряд</b> — быстрые серии дают комбо и больше очков.</span></div>
+        <div class="howto-item"><span class="howto-icon">⏸</span><span id="howtoText5">Кнопка паузы — в правом верхнем углу во время игры.</span></div>
       </div>
       <button class="btn" id="btnHowClose">Понятно</button>
     </div>
@@ -249,7 +250,7 @@
   <!-- PAUSE -->
   <div class="overlay" id="screenPause">
     <div class="panel">
-      <h1 class="logo" style="font-size:clamp(28px,8vw,36px)">Пауза</h1>
+      <h1 class="logo" id="pauseTitle" style="font-size:clamp(28px,8vw,36px)">Пауза</h1>
       <button class="btn" id="btnResume">Продолжить</button>
       <button class="btn secondary" id="btnPauseRestart">Начать заново</button>
       <button class="btn ghost" id="btnPauseMenu">Выйти в меню</button>
@@ -259,10 +260,10 @@
   <!-- GAME OVER -->
   <div class="overlay" id="screenOver">
     <div class="panel">
-      <h1 class="logo" style="font-size:clamp(30px,8vw,40px)">Игра<br>окончена</h1>
+      <h1 class="logo" id="overTitle" style="font-size:clamp(30px,8vw,40px)">Игра<br>окончена</h1>
       <div class="stat-row">
-        <div class="stat-box"><div class="n" id="overScore">0</div><div class="l">СЧЁТ</div></div>
-        <div class="stat-box best"><div class="n" id="overBest">0</div><div class="l">РЕКОРД</div></div>
+        <div class="stat-box"><div class="n" id="overScore">0</div><div class="l" id="scoreLabelOver">СЧЁТ</div></div>
+        <div class="stat-box best"><div class="n" id="overBest">0</div><div class="l" id="bestLabelOver">РЕКОРД</div></div>
       </div>
       <div class="new-best" id="newBestBadge" style="display:none;">🎉 Новый рекорд!</div>
       <button class="btn" id="btnAgain">Играть снова</button>
@@ -456,6 +457,143 @@ let soundOn = Store.get("fb_sound", "1") === "1";
 Sound.toggle(soundOn);
 
 /* =========================================================
+   2b. Localization (RU / EN)
+   ========================================================= */
+const I18N = {
+  ru: {
+    docTitle: "Сочный Клинок",
+    logoLine1: "Сочный",
+    logoLine2: "Клинок",
+    logoSub: "JUICY\u00A0BLADE",
+    metaDescription: "Сочный Клинок — аркада на скорость реакции: режь фрукты одним взмахом, избегай бомб.",
+    tagline: "Проведи пальцем или мышью по фруктам, чтобы разрезать их. Бомбы отнимают жизнь — трёх ошибок хватит, чтобы игра закончилась.",
+    best: n => "🏆 Рекорд: " + n,
+    play: "Играть",
+    how: "Как играть",
+    soundOn: "🔊 Звук",
+    soundOff: "🔇 Звук",
+    langButton: "🌐 English",
+    credit: "Сочный Клинок · v1.0.0",
+    howTitle: "Как играть",
+    howItems: [
+      ["Проведи по фрукту", " — пальцем на телефоне или мышью на компьютере, чтобы разрезать его."],
+      ["Не режь бомбы", " — чёрные шары с фитилём отнимают жизнь. Три бомбы подряд — и игра окончена."],
+      ["Не пропускай фрукты", " — если фрукт улетит за край экрана, ты тоже теряешь жизнь. Всего их три."],
+      ["Режь несколько подряд", " — быстрые серии дают комбо и больше очков."],
+      [null, "Кнопка паузы — в правом верхнем углу во время игры."]
+    ],
+    howClose: "Понятно",
+    pauseTitle: "Пауза",
+    resume: "Продолжить",
+    restart: "Начать заново",
+    toMenu: "Выйти в меню",
+    overTitle: "Игра<br>окончена",
+    scoreLabel: "СЧЁТ",
+    bestLabel: "РЕКОРД",
+    newBest: "🎉 Новый рекорд!",
+    again: "Играть снова",
+    overMenu: "В главное меню",
+    combo: n => "КОМБО ×" + n,
+    pauseAria: "Пауза"
+  },
+  en: {
+    docTitle: "Juicy Blade",
+    logoLine1: "Juicy",
+    logoLine2: "Blade",
+    logoSub: "СОЧНЫЙ\u00A0КЛИНОК",
+    metaDescription: "Juicy Blade — a reaction-speed arcade game: slice fruit in one swipe, avoid the bombs.",
+    tagline: "Swipe across fruit with your finger or mouse to slice it. Bombs cost a life — three mistakes end the run.",
+    best: n => "🏆 Best: " + n,
+    play: "Play",
+    how: "How to Play",
+    soundOn: "🔊 Sound",
+    soundOff: "🔇 Sound",
+    langButton: "🌐 Русский",
+    credit: "Juicy Blade · v1.0.0",
+    howTitle: "How to Play",
+    howItems: [
+      ["Swipe across a fruit", " — with your finger on phone or your mouse on desktop — to slice it."],
+      ["Avoid the bombs", " — the black fused balls cost you a life. Three mistakes and the run ends."],
+      ["Don't miss fruit", " — letting one fly off screen costs a life too. You start with three."],
+      ["Chain your slices", " — quick combos multiply your score."],
+      [null, "Pause anytime using the button in the top-right corner."]
+    ],
+    howClose: "Got it",
+    pauseTitle: "Paused",
+    resume: "Resume",
+    restart: "Restart",
+    toMenu: "Main Menu",
+    overTitle: "Game<br>Over",
+    scoreLabel: "SCORE",
+    bestLabel: "BEST",
+    newBest: "🎉 New record!",
+    again: "Play Again",
+    overMenu: "Main Menu",
+    combo: n => "COMBO x" + n,
+    pauseAria: "Pause"
+  }
+};
+
+function detectDefaultLang(){
+  const saved = Store.get("fb_lang", null);
+  if (saved === "ru" || saved === "en") return saved;
+  const nav = ((navigator.language || navigator.userLanguage || "en") + "").toLowerCase();
+  return nav.startsWith("ru") ? "ru" : "en";
+}
+let currentLang = detectDefaultLang();
+function t(){ return I18N[currentLang]; }
+
+function applyLanguage(lang){
+  if (!I18N[lang]) return;
+  currentLang = lang;
+  Store.set("fb_lang", lang);
+  const d = I18N[lang];
+
+  document.documentElement.lang = lang;
+  document.title = d.docTitle;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute("content", d.metaDescription);
+
+  document.getElementById("tagline").textContent = d.tagline;
+  document.getElementById("menuLogo").innerHTML = d.logoLine1 + "<br>" + d.logoLine2 + '<small id="menuLogoSub"></small>';
+  document.getElementById("menuLogoSub").textContent = d.logoSub;
+  document.getElementById("btnPlay").textContent = d.play;
+  document.getElementById("btnHow").textContent = d.how;
+  document.getElementById("btnLang").textContent = d.langButton;
+  document.getElementById("credit").textContent = d.credit;
+
+  document.getElementById("howTitle").textContent = d.howTitle;
+  d.howItems.forEach((item, i)=>{
+    const el = document.getElementById("howtoText" + (i+1));
+    if (!el) return;
+    const [bold, rest] = item;
+    el.innerHTML = bold ? ("<b>" + bold + "</b>" + rest) : rest;
+  });
+  document.getElementById("btnHowClose").textContent = d.howClose;
+
+  document.getElementById("pauseTitle").textContent = d.pauseTitle;
+  document.getElementById("btnResume").textContent = d.resume;
+  document.getElementById("btnPauseRestart").textContent = d.restart;
+  document.getElementById("btnPauseMenu").textContent = d.toMenu;
+
+  document.getElementById("overTitle").innerHTML = d.overTitle;
+  document.getElementById("scoreLabelOver").textContent = d.scoreLabel;
+  document.getElementById("bestLabelOver").textContent = d.bestLabel;
+  document.getElementById("newBestBadge").textContent = d.newBest;
+  document.getElementById("btnAgain").textContent = d.again;
+  document.getElementById("btnOverMenu").textContent = d.overMenu;
+
+  document.getElementById("scoreLabelHud").textContent = d.scoreLabel;
+  document.getElementById("pauseBtn").setAttribute("aria-label", d.pauseAria);
+
+  updateMenuBest();
+  updateSoundBtn();
+  if (comboTextEl.classList.contains("show")){
+    comboTextEl.textContent = d.combo(combo);
+  }
+}
+
+/* =========================================================
    3. DOM refs
    ========================================================= */
 const canvas = document.getElementById("game");
@@ -479,10 +617,10 @@ function showScreen(name){
   Object.values(screens).forEach(s => s.classList.remove("visible"));
   if (name && screens[name]) screens[name].classList.add("visible");
 }
-function updateMenuBest(){ menuBestEl.textContent = "🏆 Рекорд: " + bestScore; }
+function updateMenuBest(){ menuBestEl.textContent = t().best(bestScore); }
 updateMenuBest();
 function updateSoundBtn(){
-  document.getElementById("btnSound").textContent = (soundOn ? "🔊 Звук" : "🔇 Звук");
+  document.getElementById("btnSound").textContent = (soundOn ? t().soundOn : t().soundOff);
 }
 updateSoundBtn();
 
@@ -773,7 +911,7 @@ function registerCombo(){
   combo++;
   comboTimer = 0.9;
   if (combo >= 2){
-    comboTextEl.textContent = "КОМБО ×" + combo;
+    comboTextEl.textContent = t().combo(combo);
     comboTextEl.classList.add("show");
     Sound.combo(combo);
     sliceFlashAlpha = Math.min(0.16, 0.05 + combo*0.02);
@@ -1094,6 +1232,10 @@ document.getElementById("btnSound").addEventListener("click", ()=>{
   updateSoundBtn();
   if (soundOn) Sound.click();
 });
+document.getElementById("btnLang").addEventListener("click", ()=>{
+  Sound.click();
+  applyLanguage(currentLang === "ru" ? "en" : "ru");
+});
 document.getElementById("pauseBtn").addEventListener("click", pauseGame);
 document.getElementById("btnResume").addEventListener("click", ()=>{ Sound.click(); resumeGame(); });
 document.getElementById("btnPauseRestart").addEventListener("click", ()=>{ Sound.click(); startGame(); });
@@ -1119,6 +1261,7 @@ document.addEventListener("gesturestart", (e)=>{ e.preventDefault(); });
 /* =========================================================
    12. Boot
    ========================================================= */
+applyLanguage(currentLang);
 if (!rafId) rafId = requestAnimationFrame(loop);
 document.addEventListener("DOMContentLoaded", notifyBridgeReady);
 if (document.readyState !== "loading") notifyBridgeReady();
